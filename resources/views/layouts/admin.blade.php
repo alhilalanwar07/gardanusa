@@ -79,18 +79,8 @@
     <!-- jQuery Sparkline -->
     <script src="{{ url('/') }}/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js" data-navigate-track></script>
 
-    <!-- Chart Circle -->
-    <script src="{{ url('/') }}/assets/js/plugin/chart-circle/circles.min.js" data-navigate-track></script>
-
-    <!-- Datatables -->
-    <script src="{{ url('/') }}/assets/js/plugin/datatables/datatables.min.js" data-navigate-track></script>
-
     <!-- Bootstrap Notify -->
     <script src="{{ url('/') }}/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js" data-navigate-track></script>
-
-    <!-- jQuery Vector Maps -->
-    <script src="{{ url('/') }}/assets/js/plugin/jsvectormap/jsvectormap.min.js" data-navigate-track></script>
-    <script src="{{ url('/') }}/assets/js/plugin/jsvectormap/world.js" data-navigate-track></script>
 
     <!-- Sweet Alert -->
     <script src="{{ url('/') }}/assets/js/plugin/sweetalert/sweetalert.min.js" data-navigate-track></script>
