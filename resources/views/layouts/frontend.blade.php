@@ -5,12 +5,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>@yield('title', config('app.name'))</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="{{ url('/') }}/assets-front/img/favicon.png" rel="icon">
-  <link href="{{ url('/') }}/assets-front/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <meta name="description" content="CV. Garuda Digital Nusantara">
+  <meta name="keywords" content="CV. Garuda Digital Nusantara">
+  <meta name="author" content="CV. Garuda Digital Nusantara">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -26,53 +23,35 @@
 
   <!-- Main CSS File -->
   <link href="{{ url('/') }}/assets-front/css/main.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{url('/')}}/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{url('/')}}/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{url('/')}}/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{url('/')}}/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{url('/')}}/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{url('/')}}/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{url('/')}}/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{url('/')}}/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="CV. Garuda Digital Nusantara" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="{{url('/')}}/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="{{url('/')}}/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="{{url('/')}}/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="{{url('/')}}/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="{{url('/')}}/mstile-310x310.png" />
+
   @livewireStyles
 </head>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">iLanding</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
-
-    </div>
-  </header>
+<livewire:layout.frontend-header />
+  
 
   <main class="main">
 
@@ -84,25 +63,27 @@
 
     <div class="container footer-top">
       <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">iLanding</span>
+        <div class="col-lg-6 col-md-6 footer-about">
+          <a href="/" class="logo d-flex align-items-center">
+            <span class="sitename">
+              CV. Garuda Digital Nusantara
+            </span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Kec. Kolaka Kab. Kolaka</p>
+            <p>Prov. Sulawesi Tenggara</p>
+            <p class="mt-3"><strong>Telp.:</strong> <span>+1 5589 55488 55</span></p>
+            <p><strong>Email:</strong> <span>garudadigitalnusantara@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
             <li><a href="#">Home</a></li>
@@ -113,7 +94,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
             <li><a href="#">Web Design</a></li>
@@ -123,41 +104,15 @@
             <li><a href="#">Graphic Design</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
-        </div>
-
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
-      </div>
+      <p>© <span>Copyright</span> 
+      {{ date('Y') }}
+      <strong class="px-1 sitename">
+          CV. Garuda Digital Nusantara
+      </strong> <span>All Rights Reserved</span></p>
     </div>
 
   </footer>
@@ -177,9 +132,9 @@
   <script src="{{ url('/') }}/assets-front/js/main.js"></script>
 
   @stack('script')
-    @stack('scripts')
-    @livewireScripts
-    @livewireChartsScripts
+  @stack('scripts')
+  @livewireScripts
+  @livewireChartsScripts
 
 </body>
 

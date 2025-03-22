@@ -1,6 +1,4 @@
 <x-frontend>
-    @section('title', 'Beranda')
-
     <livewire:beranda.hero />
     <liveire:beranda.about />
     <liveire:beranda.features />
