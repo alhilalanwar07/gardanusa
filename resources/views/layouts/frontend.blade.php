@@ -9,49 +9,36 @@
   <meta name="keywords" content="CV. Garuda Digital Nusantara">
   <meta name="author" content="CV. Garuda Digital Nusantara">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="{{ url('/') }}/assets-front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{ url('/') }}/assets-front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="{{ url('/') }}/assets-front/vendor/aos/aos.css" rel="stylesheet">
   <link href="{{ url('/') }}/assets-front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="{{ url('/') }}/assets-front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
   <link href="{{ url('/') }}/assets-front/css/main.css" rel="stylesheet">
 
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{url('/')}}/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{url('/')}}/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{url('/')}}/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{url('/')}}/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{url('/')}}/apple-touch-icon-60x60.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{url('/')}}/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{url('/')}}/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{url('/')}}/apple-touch-icon-152x152.png" />
-  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-196x196.png" sizes="196x196" />
   <link rel="icon" type="image/png" href="{{url('/')}}/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-16x16.png" sizes="16x16" />
-  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-128.png" sizes="128x128" />
-  <meta name="application-name" content="CV. Garuda Digital Nusantara" />
-  <meta name="msapplication-TileColor" content="#FFFFFF" />
-  <meta name="msapplication-TileImage" content="{{url('/')}}/mstile-144x144.png" />
-  <meta name="msapplication-square70x70logo" content="{{url('/')}}/mstile-70x70.png" />
-  <meta name="msapplication-square150x150logo" content="{{url('/')}}/mstile-150x150.png" />
-  <meta name="msapplication-wide310x150logo" content="{{url('/')}}/mstile-310x150.png" />
-  <meta name="msapplication-square310x310logo" content="{{url('/')}}/mstile-310x310.png" />
+  <link rel="icon" type="image/svg+xml" href="{{url('/')}}/favicon.svg" />
+  <link rel="shortcut icon" href="{{url('/')}}/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Gardanusa" />
+  <link rel="manifest" href="{{url('/')}}/site.webmanifest" />
+  <link rel="manifest" href="{{url('/')}}/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
   @livewireStyles
 </head>
 
 <body class="index-page">
 
-<livewire:layout.frontend-header />
-  
+  <livewire:layout.frontend-header />
+
 
   <main class="main">
 
@@ -108,11 +95,12 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> 
-      {{ date('Y') }}
-      <strong class="px-1 sitename">
+      <p>© <span>Copyright</span>
+        {{ date('Y') }}
+        <strong class="px-1 sitename">
           CV. Garuda Digital Nusantara
-      </strong> <span>All Rights Reserved</span></p>
+        </strong> <span>All Rights Reserved</span>
+      </p>
     </div>
 
   </footer>

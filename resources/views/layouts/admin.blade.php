@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
@@ -7,19 +8,32 @@
     </title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ url('/') }}/assets/img/logo/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <script src="{{ url('/') }}/assets/js/plugin/webfont/webfont.min.js" data-navigate-track></script>
 
-    <!-- CSS Files -->
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/fonts.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/kaiadmin.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="icon" type="image/png" href="{{url('/')}}/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{url('/')}}/favicon.svg" />
+    <link rel="shortcut icon" href="{{url('/')}}/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Gardanusa" />
+    <link rel="manifest" href="{{url('/')}}/site.webmanifest" />
+    <link rel="manifest" href="{{url('/')}}/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     @livewireStyles
 </head>
+
 <body>
     <div class="wrapper">
         <livewire:layout.admin-navigation />
@@ -30,7 +44,7 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="white">
                         <a href="#" class="logo">
-                            <img src="{{ url('/') }}/assets/img/logo/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20" />
+                            <img src="{{url('/')}}/favicon-96x96.png" alt="Gardanusa" class="navbar-brand" height="20" />
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -97,4 +111,5 @@
     @livewireScripts
     @livewireChartsScripts
 </body>
+
 </html>
