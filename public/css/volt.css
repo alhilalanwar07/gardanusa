@@ -1,21 +1,6 @@
 @charset "UTF-8";
-/*
 
-=========================================================
-* Volt - Free Bootstrap 5 Dashboard
-=========================================================
-
-* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
-* Copyright 2021 Themesberg (https://www.themesberg.com)
-
-* Designed and coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal. Contact us if you want to remove it.
-
-*/
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 .datepicker {
     display: none;
@@ -1048,7 +1033,7 @@
     --bs-black-rgb: 17, 24, 39;
     --bs-body-color-rgb: 55, 65, 81;
     --bs-body-bg-rgb: 242, 244, 246;
-    --bs-font-sans-serif: "Inter", sans-serif;
+    --bs-font-sans-serif: "Poppins", sans-serif;
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     --bs-body-font-family: var(--bs-font-sans-serif);

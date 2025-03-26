@@ -2,186 +2,217 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- Primary Meta Tags -->
-    <title>{{ config('app.name') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="{{ config('app.name') }}">
-    <meta name="author" content="Themesberg">
-    <meta name="description" content="{{ config('app.name') }}">
-    <meta name="keywords" content="sistem, informasi, funsional, spj" />
-    <link rel="canonical" href="{{ url('/') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name') }} - Login</title>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:title" content="{{ config('app.name') }}">
-    <meta property="og:description" content="{{ config('app.name') }}">
-    <meta property="og:image" content="{{ url('/') }}">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ url('/') }}">
-    <meta property="twitter:title" content="{{ config('app.name') }}">
-    <meta property="twitter:description" content="{{ config('app.name') }}">
-    <meta property="twitter:image" content="{{ url('/') }}">
-
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ url('/') }}/assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('/') }}/assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/') }}/assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="{{ url('/') }}/assets/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="{{ url('/') }}/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Sweet Alert -->
+    <!-- Existing Assets -->
     <link type="text/css" href="{{ url('/') }}/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
-
-    <!-- Notyf -->
     <link type="text/css" href="{{ url('/') }}/vendor/notyf/notyf.min.css" rel="stylesheet">
-
-    <!-- Volt CSS -->
     <link type="text/css" href="{{ url('/') }}/css/volt.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif !important;
 
+        }
+
+        .fas,
+        .far,
+        .fab {
+            font-family: "Font Awesome 5 Free" !important;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-section {
+            background: linear-gradient(135deg, #2D98DA 0%, #FF4757 100%);
+        }
+
+        .rocket-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .custom-checkbox .form-check-input:checked {
+            background-color: #FF4757;
+            border-color: #FF4757;
+        }
+
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .login-image-section,
+        .login-form-section {
+            min-height: 100vh;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 71, 87, 0.25);
+            border-color: #FF4757;
+            background-color: #fff;
+        }
+
+        .input-group-text {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .btn-sign-in {
+            background: linear-gradient(45deg, #FF4757, #FF6B81);
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn-sign-in:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.45);
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .floating-label {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .floating-label input {
+            padding-left: 45px;
+        }
+
+        .floating-label .icon {
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            color: #adb5bd;
+        }
+
+        /* Hide image section on mobile */
+        @media (max-width: 767.98px) {
+            .login-image-section {
+                display: none;
+            }
+
+            .login-form-section {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="login-container">
+        <!-- Left Section (Image) -->
+        <div class="login-image-section gradient-section p-5 text-center text-white d-flex flex-column justify-content-center col-md-6 d-none d-md-flex">
+            <img src="{{url('/')}}/favicon-96x96.png"
+                alt="Gardanuda"
+                class="rocket-image img-fluid mb-4"
+                style="max-width: 350px; margin: 0 auto;">
+            <h2 class="mb-3">Hey there!</h2>
+            <p class="lead mb-4">Welcome back. You are just one step away to your feed.</p>
+        </div>
 
-    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+        <!-- Right Section (Form) -->
+        <div class="login-form-section col-12 col-md-6 p-5 d-flex flex-column justify-content-center">
+            <div class="w-100" style="max-width: 600px; margin: 0 auto;">
+                <div class="text-center mb-5">
+                    <img src="{{url('/')}}/favicon-96x96.png" alt="Garudanusa Logo" class="mb-3" width="80">
+                    <h2 class="fw-bold mb-0" style="background: linear-gradient(45deg, #2D98DA, #FF4757); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">GARUDANUSA</h2>
+                    <p class="text-muted">CV. Garuda Digital Nusantara</p>
+                    <div class="d-flex justify-content-center">
+                        <div style="width: 60px; height: 4px; background: linear-gradient(45deg, #2D98DA, #FF4757); border-radius: 2px;"></div>
+                    </div>
+                </div>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="floating-label mb-4">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email"
+                            class="form-control @error('email') is-invalid @enderror"
+                            name="email"
+                            placeholder="Your email address"
+                            value="{{ old('email') }}"
+                            required>
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-    <main>
+                    <div class="floating-label mb-4">
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password"
+                            class="form-control @error('password') is-invalid @enderror"
+                            name="password"
+                            placeholder="Your password"
+                            required>
+                        @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-        <!-- Section -->
-        <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
-            <div class="container">
-                <p class="text-center">
-                    <a href="{{ url('/home') }}" class="d-flex align-items-center justify-content-center">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                        Back to homepage
-                    </a>
-                </p>
-                <div class="row justify-content-center form-bg-image" data-background-lg="{{ url('/') }}/assets/img/illustrations/signin.svg">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                            <div class="text-center text-md-center mb-4 mt-md-0">
-                                <h1 class="mb-0 h3">{{ config('app.name') }}</h1>
-                            </div>
-                            <form class="mt-4" method="POST" action="{{ route('login') }}">
-                            @csrf
-                                <!-- Form -->
-                                <div class="form-group mb-4">
-                                    <label for="email">Your Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                            </svg>
-                                        </span>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <button type="submit" class="btn btn-danger btn-sign-in w-100 rounded-pill mb-3">
+                        Sign In <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+                </form>
 
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!-- End of Form -->
-                                <div class="form-group">
-                                    <!-- Form -->
-                                    <div class="form-group mb-4">
-                                        <label for="password">Your Password</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon2">
-                                                <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
-                                                </svg>
-                                            </span>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <!-- End of Form -->
-                                    <div class="d-flex justify-content-between align-items-top mb-4">
-                                        {{-- <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="remember">
-                                            <label class="form-check-label mb-0" for="remember">
-                                                Remember me
-                                            </label>
-                                        </div> --}}
-                                        <div><a href="./forgot-password.html" class="small text-right">Lost password?</a></div>
-                                    </div>
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-gray-800">Sign in</button>
-                                </div>
-                            </form>
-                            <div class="d-flex justify-content-center align-items-center mt-4">
-                                <span class="fw-normal">
-                                    Not registered?
-                                    <a href="./sign-up.html" class="fw-bold">Create account</a>
-                                </span>
-                            </div>
+                <!-- Footer -->
+                <div class="footer mt-auto pt-4 text-center">
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <p class="mb-0 text-muted small">&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+                        </div>
+                        <div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <!-- Core -->
+    <!-- Existing JS Assets -->
     <script src="{{ url('/') }}/vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="{{ url('/') }}/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Vendor JS -->
-    <script src="{{ url('/') }}/vendor/onscreen/dist/on-screen.umd.min.js"></script>
-
-    <!-- Slider -->
-    <script src="{{ url('/') }}/vendor/nouislider/distribute/nouislider.min.js"></script>
-
-    <!-- Smooth scroll -->
-    <script src="{{ url('/') }}/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-
-    <!-- Charts -->
-    <script src="{{ url('/') }}/vendor/chartist/dist/chartist.min.js"></script>
-    <script src="{{ url('/') }}/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-
-    <!-- Datepicker -->
-    <script src="{{ url('/') }}/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-
-    <!-- Sweet Alerts 2 -->
-    <script src="{{ url('/') }}/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
-
-    <!-- Moment JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-
-    <!-- Vanilla JS Datepicker -->
-    <script src="{{ url('/') }}/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-
-    <!-- Notyf -->
     <script src="{{ url('/') }}/vendor/notyf/notyf.min.js"></script>
-
-    <!-- Simplebar -->
-    <script src="{{ url('/') }}/vendor/simplebar/dist/simplebar.min.js"></script>
-
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
-    <!-- Volt JS -->
     <script src="{{ url('/') }}/assets/js/volt.js"></script>
-
-
 </body>
 
 </html>
