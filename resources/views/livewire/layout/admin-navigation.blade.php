@@ -9,7 +9,7 @@ new class extends Component {
     {
         $logout();
 
-        $this->redirect('/', navigate: true);
+        $this->redirect('/', navigate: false);
     }
 }; ?>
 
@@ -49,13 +49,97 @@ new class extends Component {
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
                         </span>
-                        <h4 class="text-section">Masters</h4>
+                        <h4 class="text-section">Konten</h4>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.layanan*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.layanan') }}" wire:navigate>
+                            <i class="fas fa-concierge-bell"></i>
+                            <p>Layanan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.klien*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.klien') }}" wire:navigate>
+                            <i class="fas fa-handshake"></i>
+                            <p>Klien</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.tim*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.tim') }}" wire:navigate>
+                            <i class="fas fa-user-friends"></i>
+                            <p>Tim</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.blog*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.blog') }}" wire:navigate>
+                            <i class="fas fa-newspaper"></i>
+                            <p>Blog</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.testimoni*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.testimoni') }}" wire:navigate>
+                            <i class="fas fa-quote-right"></i>
+                            <p>Testimoni</p>
+                        </a>
                     </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
                         </span>
-                        <h4 class="text-section">Proses</h4>
+                        <h4 class="text-section">Tampilan</h4>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.slider*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-images"></i>
+                            <p>Slider</p>
+                        </a>
+                    </li>                    
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Analitik</h4>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.pengunjung*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-chart-line"></i>
+                            <p>Pengunjung</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.statistik*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-chart-pie"></i>
+                            <p>Statistik</p>
+                        </a>
+                    </li>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Pengaturan</h4>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.umum*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-cog"></i>
+                            <p>Umum</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.seo*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-search"></i>
+                            <p>SEO</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.backup*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="#" wire:navigate>
+                            <i class="fas fa-database"></i>
+                            <p>Backup</p>
+                        </a>
+                    </li>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Pengguna</h4>
                     </li>
                     @if(auth()->user()->role == 'admin')
                     <li class="nav-item {{ Route::is('admin.manajemen-user') ? 'active text-info' : '' }}">
@@ -71,8 +155,6 @@ new class extends Component {
                             <p>Profil</p>
                         </a>
                     </li>
-
-
                     <br>
                     <div class="px-4">
                         <li class="nav-item" style="padding: 0px !important;">

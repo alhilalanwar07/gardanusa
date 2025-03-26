@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <link href="{{ url('/') }}/assets-front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{ url('/') }}/assets-front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -31,6 +31,19 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  <style>
+    /* font poppins kecuali fas,far, icon dll */
+    * {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .fas,
+    .far,
+    .fab {
+      font-family: "Font Awesome 5 Free" !important;
+    }
+  </style>
 
   @livewireStyles
 </head>
