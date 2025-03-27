@@ -34,7 +34,10 @@
         }
 
         .gradient-section {
-            background: linear-gradient(135deg, #2D98DA 0%, #FF4757 100%);
+            background-image: url('{{ url('/') }}/assets/img/bg-tech.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .rocket-image {
@@ -155,7 +158,7 @@
             <div class="w-100" style="max-width: 600px; margin: 0 auto;">
                 <div class="text-center mb-5">
                     <img src="{{url('/')}}/favicon-96x96.png" alt="Garudanusa Logo" class="mb-3" width="80">
-                    <h2 class="fw-bold mb-0" style="background: linear-gradient(45deg, #2D98DA, #FF4757); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">GARUDANUSA</h2>
+                    <h2 class="fw-bold mb-0" style="background: linear-gradient(45deg, #2D98DA, #FF4757); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">GARDANUSA</h2>
                     <p class="text-muted">CV. Garuda Digital Nusantara</p>
                     <div class="d-flex justify-content-center">
                         <div style="width: 60px; height: 4px; background: linear-gradient(45deg, #2D98DA, #FF4757); border-radius: 2px;"></div>
@@ -189,7 +192,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-danger btn-sign-in w-100 rounded-pill mb-3">
-                        Sign In <i class="fas fa-arrow-right ms-1"></i>
+                        Masuk <i class="fas fa-arrow-right ms-1"></i>
                     </button>
                 </form>
 
