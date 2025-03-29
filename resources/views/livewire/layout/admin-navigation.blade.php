@@ -57,6 +57,12 @@ new class extends Component {
                             <p>Layanan</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Route::is('admin.produk*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.produk') }}" wire:navigate>
+                            <i class="fas fa-laptop"></i>
+                            <p>Produk</p>
+                        </a>
+                    </li>
                     <li class="nav-item {{ Route::is('admin.klien*') ? 'active text-info' : '' }}">
                         <a class="nav-link" href="{{ route('admin.klien') }}" wire:navigate>
                             <i class="fas fa-handshake"></i>
@@ -73,6 +79,12 @@ new class extends Component {
                         <a class="nav-link" href="{{ route('admin.blog') }}" wire:navigate>
                             <i class="fas fa-newspaper"></i>
                             <p>Blog</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.portofolio*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.portofolio') }}" wire:navigate>
+                            <i class="fas fa-briefcase"></i>
+                            <p>Portofolio</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Route::is('admin.testimoni*') ? 'active text-info' : '' }}">

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
         @yield('title', config('app.name'))
@@ -31,7 +32,7 @@
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/kaiadmin.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    
+    @stack('styles')
     @livewireStyles
 </head>
 
