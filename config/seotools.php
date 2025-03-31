@@ -44,7 +44,6 @@ return [
             'site_name'   => 'CV. Garuda Digital Nusantara',
             'images'      => [
                 // URL gambar default menggunakan favicon.ico dari public directory
-                asset('favicon.ico'),
             ],
         ],
     ],
@@ -67,8 +66,7 @@ return [
             'url'         => null, // Gunakan Url::full() secara default
             'type'        => 'WebPage',
             'images'      => [
-                // Tambahkan URL gambar default jika diperlukan
-                asset('favicon.ico'),
+                // Tambahkan URL gambar default jika 
             ],
         ],
     ],

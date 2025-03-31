@@ -14,9 +14,15 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
-            $table->string('image')->nullable();
             $table->string('slug')->unique();
+            $table->text('content');
+            $table->text('excerpt')->nullable();
+            $table->string('featured_image')->nullable();
+            $table->foreignId('category_id')->constrained();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->dateTime('published_at');
+            $table->enum('status', ['draft', 'published'])->default('draft');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

@@ -12,7 +12,9 @@ Route::middleware('auth')->group(function () {
     Route::view('produk', 'produk')->name('admin.produk');
     Route::view('klien', 'klien')->name('admin.klien');
     Route::view('tim', 'tim')->name('admin.tim');
-    Route::view('blog', 'blog')->name('admin.blog');
+    Route::view('kategori', 'kategori')->name('admin.kategori');
+    Route::view('tag', 'tag')->name('admin.tag');
+    Route::view('blog', 'blog')->name('admin.artikel');
     Route::view('portofolio', 'portofolio')->name('admin.portofolio');
     Route::view('testimoni', 'testimoni')->name('admin.testimoni');
 

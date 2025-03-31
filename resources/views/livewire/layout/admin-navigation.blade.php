@@ -75,12 +75,6 @@ new class extends Component {
                             <p>Tim</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ Route::is('admin.blog*') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.blog') }}" wire:navigate>
-                            <i class="fas fa-newspaper"></i>
-                            <p>Blog</p>
-                        </a>
-                    </li>
                     <li class="nav-item {{ Route::is('admin.portofolio*') ? 'active text-info' : '' }}">
                         <a class="nav-link" href="{{ route('admin.portofolio') }}" wire:navigate>
                             <i class="fas fa-briefcase"></i>
@@ -97,12 +91,30 @@ new class extends Component {
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
                         </span>
-                        <h4 class="text-section">Tampilan</h4>
+                        <h4 class="text-section">Blog</h4>
                     </li>
                     <li class="nav-item {{ Route::is('admin.slider*') ? 'active text-info' : '' }}">
                         <a class="nav-link" href="#" wire:navigate>
                             <i class="fas fa-images"></i>
                             <p>Slider</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.kategori*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.kategori') }}" wire:navigate>
+                            <i class="fas fa-folder"></i>
+                            <p>Kategori</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.tag*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.tag') }}" wire:navigate>
+                            <i class="fas fa-tags"></i>
+                            <p>Tag</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('admin.artikel*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.artikel') }}" wire:navigate>
+                            <i class="fas fa-newspaper"></i>
+                            <p>Artikel</p>
                         </a>
                     </li>                    
                     <li class="nav-section">
