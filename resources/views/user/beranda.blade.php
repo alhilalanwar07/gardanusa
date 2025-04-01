@@ -1,8 +1,8 @@
 <x-frontend>
     <livewire:beranda.hero />
-    <liveire:beranda.about />
-    <liveire:beranda.features />
-    <liveire:beranda.features-cards />
+    <livewire:beranda.about />
+    <livewire:beranda.features />
+    <livewire:beranda.features-cards />
     <livewire:beranda.features2 />
     <livewire:beranda.call-to-action />
     <livewire:beranda.clients />
@@ -11,6 +11,6 @@
     <livewire:beranda.services />
     <livewire:beranda.pricing />
     <livewire:beranda.faq />
-    <livewire:beranda.call-to-actions-2 />
+    <livewire:beranda.call-to-actions-2 />  
     <livewire:beranda.contact />
 </x-frontend>

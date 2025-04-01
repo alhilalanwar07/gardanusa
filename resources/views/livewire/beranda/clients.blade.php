@@ -3,7 +3,14 @@
 use Livewire\Volt\Component;
 
 new class extends Component {
-    //
+    public function with(): array
+    {
+        return [
+            'clients' => \App\Models\Client::orderBy('created_at', 'desc')->get(),
+            'clientCount' => \App\Models\Client::count(),
+            'additionalNeeded' => \App\Models\Client::count() < 12 ? 12 - \App\Models\Client::count() : 0,
+        ];
+    }
 }; ?>
 
 <div>
@@ -46,14 +53,19 @@ new class extends Component {
                     }
                 </script>
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-1.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-2.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-3.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-4.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-5.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-6.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-7.png" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{url('/')}}/assets-front/img/clients/client-8.png" class="img-fluid" alt=""></div>
+                   
+
+                    @foreach($clients as $client)
+                        <div class="swiper-slide">
+                            <img src="{{ asset('storage/' . $client->logo) }}" class="img-fluid" alt="{{ $client->name }}">
+                        </div>
+                    @endforeach
+
+                    @for($i = 0; $i < $additionalNeeded; $i++)
+                        <div class="swiper-slide">
+                            <img src="{{ asset('storage/' . $clients[($i % $clientCount)]->logo) }}" class="img-fluid" alt="{{ $clients[($i % $clientCount)]->name }}">
+                        </div>
+                    @endfor
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
