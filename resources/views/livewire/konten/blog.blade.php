@@ -178,6 +178,11 @@ new class extends Component {
                 'category_id.required' => 'Kategori tidak boleh kosong.',
                 'published_at.required' => 'Tanggal publikasi tidak boleh kosong.',
                 'status.required' => 'Status tidak boleh kosong.',
+                'excerpt.max' => 'Ringkasan maksimal 300 karakter.',
+                'meta_title.max' => 'Meta title maksimal 255 karakter.',
+                'meta_description.max' => 'Meta deskripsi maksimal 160 karakter.',
+                'tempFeaturedImage.image' => 'Gambar utama harus berupa gambar.',
+                'tempFeaturedImage.max' => 'Ukuran gambar utama maksimal 2MB.',
             ]);
 
             $data = [
@@ -209,9 +214,10 @@ new class extends Component {
         }
     }
 
-    public function deletePost(): void
+    public function deletePost($id): void
     {
         try {
+            $this->postId = $id;
             if ($this->postId) {
                 $post = Post::findOrFail($this->postId);
                 $post->tags()->detach();
@@ -260,14 +266,14 @@ new class extends Component {
         <div class="card card-round">
             <div class="card-header">
                 <div class="card-head-row">
-                    <div class="card-title">Manajemen Post</div>
+                    <div class="card-title">Artikel</div>
                     <div class="card-tools">
                         <button class="btn btn-info btn-sm me-2"
                             data-bs-toggle="modal"
                             data-bs-target="#modalTambah"
                             wire:click="resetInputFields">
                             <i class="fa fa-plus"></i>
-                            Tambah Post
+                            Tambah Artikel
                         </button>
                     </div>
                 </div>
@@ -297,6 +303,7 @@ new class extends Component {
                             <tr>
                                 <th>#</th>
                                 <th>Judul</th>
+                                <th>Tag</th>
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th width="10%">Aksi</th>
@@ -310,6 +317,11 @@ new class extends Component {
                                     <b>{{ Str::limit($post->title, 50) }}</b>
                                     <br>
                                     <small class="text-muted">{{ $post->category->name }}</small>
+                                </td>
+                                <td>
+                                    @foreach($post->tags as $tag)
+                                    <span class="badge bg-primary">{{ $tag->name }}</span>
+                                    @endforeach
                                 </td>
                                 <td>
                                     <button class="btn btn-sm btn-{{ $post->status === 'published' ? 'success' : 'danger' }}"
@@ -363,7 +375,7 @@ new class extends Component {
                                         <label>Judul Post</label>
                                         <input type="text"
                                             class="form-control @error('title') is-invalid @enderror"
-                                            wire:model="title">
+                                            wire:model.live="title">
                                         @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                     </div>
 
@@ -446,22 +458,25 @@ new class extends Component {
                                             <div class="mb-3">
                                                 <label>Ringkasan (Excerpt)</label>
                                                 <textarea class="form-control"
-                                                    rows="3"
+                                                    rows="3" placeholder="Maximal 255 karakter"
                                                     wire:model="excerpt"></textarea>
+                                                @error('excerpt') <div class="text-danger small">{{ $message }}</div> @enderror
                                             </div>
 
                                             <div class="mb-3">
                                                 <label>Meta Title</label>
                                                 <input type="text"
-                                                    class="form-control"
-                                                    wire:model="meta_title">
+                                                    class="form-control" maxlength="255" 
+                                                    wire:model.live="meta_title">
+                                                @error('meta_title') <div class="text-danger small">{{ $message }}</div> @enderror
                                             </div>
 
                                             <div class="mb-3">
                                                 <label>Meta Description</label>
                                                 <textarea class="form-control"
-                                                    rows="3"
-                                                    wire:model="meta_description"></textarea>
+                                                    rows="3" maxlength="160" placeholder="Maximal 160 karakter"
+                                                    wire:model.live="meta_description"></textarea>
+                                                @error('meta_description') <div class="text-danger small">{{ $message }}</div> @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -495,7 +510,7 @@ new class extends Component {
                                         <label>Judul Post</label>
                                         <input type="text"
                                             class="form-control @error('title') is-invalid @enderror"
-                                            wire:model="title">
+                                            wire:model.live="title">
                                         @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                     </div>
 
@@ -614,6 +629,8 @@ new class extends Component {
                 </div>
             </div>
         </div>
+
+        <livewire:_alert/>
         <!-- End Modal Edit -->
         @push('styles')
         <style>

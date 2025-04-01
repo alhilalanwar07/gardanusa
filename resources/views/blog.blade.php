@@ -1,5 +1,5 @@
 <x-admin-layout>
-    @section('title', 'Data Blog')
+    @section('title', 'Data Artikel')
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs mb-3">
@@ -12,7 +12,7 @@
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Data Blog</a>
+                    <a href="#">Data Artikel</a>
                 </li>
             </ul>
         </div>

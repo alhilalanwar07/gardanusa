@@ -27,6 +27,9 @@ new class extends Component {
     public string $search = '';
     public int $perPage = 10;
     public $tempImage = null;
+    public $tempGallery = [];
+    public $existingGallery = [];
+    public $newGallery = [];
 
     protected $listeners = [
         'deleteConfirmed' => 'deleteProject',
@@ -35,11 +38,26 @@ new class extends Component {
 
     public function with(): array
     {
-        return [
-            'projects' => Project::when($this->search, function ($query) {
-                return $query->where('title', 'like', '%' . $this->search . '%')
+        $projects = Project::query()
+            ->with(['client', 'service'])
+            ->when($this->search, function ($query) {
+                $query->where('title', 'like', '%' . $this->search . '%')
                     ->orWhere('description', 'like', '%' . $this->search . '%');
-            })->orderBy('created_at', 'desc')->paginate($this->perPage),
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate($this->perPage);
+
+        $projects->through(function ($project) {
+            if (!empty($project->gallery)) {
+                $project->gallery = is_string($project->gallery) 
+                    ? array_filter(json_decode($project->gallery, true) ?? [], fn($item) => is_string($item) && !empty($item))
+                    : array_filter((array)$project->gallery, fn($item) => is_string($item) && !empty($item));
+            }
+            return $project;
+        });
+
+        return [
+            'projects' => $projects,
             'clients' => Client::orderBy('name')->get(),
             'services' => Service::orderBy('title')->get(),
         ];
@@ -70,16 +88,13 @@ new class extends Component {
             $this->validate(
                 [
                     'title' => 'required|string|max:255',
-                    'description' => 'required|string|max:1000',
+                    'description' => 'required|string',
                     'tempImage' => 'required|image|max:1024',
                     'project_date' => 'required|date',
                     'client_id' => 'required|integer',
                     'service_id' => 'required|integer',
                     'url' => 'nullable|string|max:255',
                     'slug' => 'required|string|max:255',
-                    'challenge' => 'nullable|string|max:1000',
-                    'solution' => 'nullable|string|max:1000',
-                    'gallery' => 'nullable|array',
                 ],
                 [
                     'required' => ':attribute tidak boleh kosong.',
@@ -88,7 +103,6 @@ new class extends Component {
                     'title.max' => 'Judul portofolio tidak boleh lebih dari 255 karakter.',
                     'description.required' => 'Deskripsi portofolio tidak boleh kosong.',
                     'description.string' => 'Deskripsi portofolio harus berupa teks.',
-                    'description.max' => 'Deskripsi portofolio tidak boleh lebih dari 1000 karakter.',
                     'tempImage.required' => 'Gambar portofolio tidak boleh kosong.',
                     'tempImage.image' => 'File yang diunggah harus berupa gambar.',
                     'tempImage.max' => 'Ukuran gambar tidak boleh lebih dari 1 MB.',
@@ -103,11 +117,6 @@ new class extends Component {
                     'slug.required' => 'Slug tidak boleh kosong.',
                     'slug.string' => 'Slug harus berupa teks.',
                     'slug.max' => 'Slug tidak boleh lebih dari 255 karakter.',
-                    'challenge.string' => 'Tantangan harus berupa teks.',
-                    'challenge.max' => 'Tantangan tidak boleh lebih dari 1000 karakter.',
-                    'solution.string' => 'Solusi harus berupa teks.',
-                    'solution.max' => 'Solusi tidak boleh lebih dari 1000 karakter.',
-                    'gallery.array' => 'Galeri harus berupa array.',
                 ]
             );
 
@@ -115,14 +124,16 @@ new class extends Component {
             $this->tempImage->storeAs('public/projects', $imageName);
 
             // gallery
+            $galleryPaths = [];
             if ($this->gallery) {
                 foreach ($this->gallery as $file) {
                     $fileName = time() . '_' . $file->getClientOriginalName();
                     $file->storeAs('public/projects/gallery', $fileName);
-                    $this->gallery[] = 'projects/gallery/' . $fileName;
+                    $galleryPaths[] = 'projects/gallery/' . $fileName;
                 }
             }
-            $this->gallery = json_encode($this->gallery);
+
+            $this->gallery = json_encode($galleryPaths);
 
             Project::create([
                 'title' => $this->title,
@@ -165,6 +176,8 @@ new class extends Component {
         $this->challenge = $project->challenge;
         $this->solution = $project->solution;
         $this->gallery = $project->gallery;
+        $this->existingGallery = json_decode($project->gallery, true) ?? [];
+        $this->newGallery = [];
     }
 
     public function updateProject(): void
@@ -172,15 +185,12 @@ new class extends Component {
         try {
             $rules = [
                 'title' => 'required|string|max:255',
-                'description' => 'required|string|max:1000',
+                'description' => 'required|string',
                 'project_date' => 'required|date',
                 'client_id' => 'required|integer',
                 'service_id' => 'required|integer',
                 'url' => 'nullable|string|max:255',
                 'slug' => 'required|string|max:255',
-                'challenge' => 'nullable|string|max:1000',
-                'solution' => 'nullable|string|max:1000',
-                'gallery' => 'nullable|array',
             ];
 
             if ($this->tempImage) {
@@ -194,11 +204,6 @@ new class extends Component {
                 'client_id.required' => 'Klien tidak boleh kosong.',
                 'service_id.required' => 'Layanan tidak boleh kosong.',
                 'slug.required' => 'Slug tidak boleh kosong.',
-                'challenge.string' => 'Tantangan harus berupa teks.',
-                'challenge.max' => 'Tantangan tidak boleh lebih dari 1000 karakter.',
-                'solution.string' => 'Solusi harus berupa teks.',
-                'solution.max' => 'Solusi tidak boleh lebih dari 1000 karakter.',
-                'gallery.array' => 'Galeri harus berupa array.',
             ]);
 
             $project = Project::findOrFail($this->projectId);
@@ -212,13 +217,25 @@ new class extends Component {
                 'slug' => $this->slug,
                 'challenge' => $this->challenge,
                 'solution' => $this->solution,
-                'gallery' => $this->gallery,
             ];
 
             if ($this->tempImage) {
                 $imageName = time() . '.' . $this->tempImage->extension();
                 $this->tempImage->storeAs('public/projects', $imageName);
                 $data['image'] = 'projects/' . $imageName;
+            }
+
+            if ($this->newGallery) {
+                $galleryPaths = [];
+                foreach ($this->newGallery as $file) {
+                    $fileName = time() . '_' . $file->getClientOriginalName();
+                    $file->storeAs('public/projects/gallery', $fileName);
+                    $galleryPaths[] = 'projects/gallery/' . $fileName;
+                }
+
+                // Merge existing gallery with new gallery
+                $existingGallery = json_decode($project->gallery, true) ?? [];
+                $data['gallery'] = json_encode(array_merge($existingGallery, $galleryPaths));
             }
 
             $project->update($data);
@@ -253,15 +270,12 @@ new class extends Component {
     {
         $rules = [
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
+            'description' => 'required|string',
             'project_date' => 'required|date',
             'client_id' => 'required|integer',
             'service_id' => 'required|integer',
             'url' => 'nullable|string|max:255',
             'slug' => 'required|string|max:255',
-            'challenge' => 'nullable|string|max:1000',
-            'solution' => 'nullable|string|max:1000',
-            'gallery' => 'nullable|array',
         ];
 
         $messages = [
@@ -271,11 +285,6 @@ new class extends Component {
             'client_id.required' => 'Klien tidak boleh kosong.',
             'service_id.required' => 'Layanan tidak boleh kosong.',
             'slug.required' => 'Slug tidak boleh kosong.',
-            'challenge.string' => 'Tantangan harus berupa teks.',
-            'challenge.max' => 'Tantangan tidak boleh lebih dari 1000 karakter.',
-            'solution.string' => 'Solusi harus berupa teks.',
-            'solution.max' => 'Solusi tidak boleh lebih dari 1000 karakter.',
-            'gallery.array' => 'Galeri harus berupa array.',
         ];
 
         if ($propertyName === 'tempImage') {
@@ -345,6 +354,7 @@ new class extends Component {
                                 <th>Klien</th>
                                 <th>Slug</th>
                                 <th>Tanggal</th>
+                                <th>Gallery</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -362,6 +372,19 @@ new class extends Component {
                                 <td>{{ $project->client->name }}</td>
                                 <td>{{ $project->slug }}</td>
                                 <td>{{ $project->project_date }}</td>
+                                <td>
+                                    @if(!empty($project->gallery) && is_array($project->gallery))
+                                    <div class="d-flex flex-wrap gap-1" style="max-width: 200px;">
+                                        @foreach($project->gallery as $image)
+                                        @if(is_string($image) && !empty($image))
+                                        <img src="{{ asset('storage/' . $image) }}" alt="Gallery Image" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    @else
+                                    <span class="text-muted">Tidak ada galeri</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="#" wire:click.prevent="edit({{ $project->id }})" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="fa fa-edit"></i>
@@ -470,19 +493,16 @@ new class extends Component {
                             <div class="mb-3">
                                 <label for="challenge" class="form-label">Tantangan (Opsional)</label>
                                 <textarea class="form-control @error('challenge') is-invalid @enderror" id="challenge" rows="3" wire:model="challenge" placeholder="Tantangan proyek"></textarea>
-                                @error('challenge') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="solution" class="form-label">Solusi (Opsional)</label>
                                 <textarea class="form-control @error('solution') is-invalid @enderror" id="solution" rows="3" wire:model="solution" placeholder="Solusi proyek"></textarea>
-                                @error('solution') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="gallery" class="form-label">Galeri (Opsional)</label>
-                                <input type="file" class="form-control @error('gallery') is-invalid @enderror" id="gallery" wire:model="gallery" multiple>
-                                @error('gallery') <span class="text-danger">{{ $message }}</span> @enderror
+                                <input type="file" class="form-control" id="gallery" wire:model="gallery" multiple>
                             </div>
 
                             <div class="modal-footer">
@@ -581,19 +601,16 @@ new class extends Component {
                             <div class="mb-3">
                                 <label for="challenge" class="form-label">Tantangan (Opsional)</label>
                                 <textarea class="form-control @error('challenge') is-invalid @enderror" id="challenge" rows="3" wire:model="challenge"></textarea>
-                                @error('challenge') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="solution" class="form-label">Solusi (Opsional)</label>
                                 <textarea class="form-control @error('solution') is-invalid @enderror" id="solution" rows="3" wire:model="solution"></textarea>
-                                @error('solution') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="gallery" class="form-label">Galeri (Opsional)</label>
-                                <input type="file" class="form-control @error('gallery') is-invalid @enderror" id="gallery" wire:model="gallery" multiple>
-                                @error('gallery') <span class="text-danger">{{ $message }}</span> @enderror
+                                <input type="file" class="form-control" id="newGallery" wire:model="newGallery" multiple>
                             </div>
 
                             <div class="modal-footer">
