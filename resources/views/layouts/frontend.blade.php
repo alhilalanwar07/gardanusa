@@ -45,7 +45,7 @@
     }
   </style>
 
-  @livewireStyles
+  @livewireStyles()
 </head>
 
 <body class="index-page">
@@ -77,7 +77,7 @@
 
   @stack('script')
   @stack('scripts')
-  @livewireScripts
+  @livewireScripts()
 
 </body>
 

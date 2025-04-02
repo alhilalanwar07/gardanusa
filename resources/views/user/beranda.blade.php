@@ -1,4 +1,4 @@
-<x-frontend>
+<x-frontend-layout>
     <livewire:beranda.hero />
     <livewire:beranda.about />
     <livewire:beranda.features />
@@ -9,4 +9,4 @@
     <livewire:beranda.testimonials />
     <livewire:beranda.faq />
     <livewire:beranda.call-to-action />
-</x-frontend>
+</x-frontend-layout>
