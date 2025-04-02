@@ -26,5 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // beranda
-Route::view('/', 'user.beranda')->name('beranda');
+Route::get('/', function () {
+    return view('user.beranda');
+})->name('beranda');
 
