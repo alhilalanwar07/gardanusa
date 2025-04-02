@@ -1262,6 +1262,35 @@ section,
   margin-bottom: 0;
 }
 
+.features .btn-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%); /* Light background color */
+  border: none;
+  padding: 8px 20px; /* Added padding */
+  border-radius: 30px; /* Rounded corners */
+}
+
+.features .btn-learn-more i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.features .btn-learn-more:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color); /* Solid background on hover */
+}
+
+.features .btn-learn-more:hover i {
+  transform: translateX(5px);
+}
+
 /*--------------------------------------------------------------
 # Features Cards Section
 --------------------------------------------------------------*/

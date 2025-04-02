@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::view('blog', 'blog')->name('admin.artikel');
     Route::view('portofolio', 'portofolio')->name('admin.portofolio');
     Route::view('testimoni', 'testimoni')->name('admin.testimoni');
+    Route::view('faq', 'faq')->name('admin.faq');
 
     Route::view('manajemen-user', 'manajemen-user')->name('admin.manajemen-user');
     Route::view('profil', 'profil')->name('profil');

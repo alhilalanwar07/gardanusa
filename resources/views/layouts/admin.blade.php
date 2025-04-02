@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/kaiadmin.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="{{ url('/') }}/assets-front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
     @stack('styles')
     @livewireStyles

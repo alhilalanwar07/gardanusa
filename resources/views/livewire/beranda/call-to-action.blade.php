@@ -7,15 +7,15 @@ new class extends Component {
 }; ?>
 
 <div>
-    <section id="call-to-action" class="call-to-action section">
+    <section id="call-to-action" class="call-to-action section" style="padding: 20px 0px !important;">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="row content justify-content-center align-items-center position-relative">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="display-4 mb-4">Maecenas tempus tellus eget condimentum</h2>
-                    <p class="mb-4">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel</p>
-                    <a href="#" class="btn btn-cta">Call To Action</a>
+                <div class="col-lg-12 mx-auto text-center">
+                    <h2 class="display-4 mb-4 text-uppercase">Jangan Lewatkan Kesempatan Ini!</h2>
+                    <p class="mb-4">Kami menghadirkan solusi digital inovatif, aman, dan terpercaya untuk membantu bisnis Anda berkembang. Mulai perjalanan transformasi digital Anda bersama kami hari ini!</p>
+                    <a href="#" class="btn btn-cta">Dapatkan Solusi</a>
                 </div>
 
                 <!-- Abstract Background Elements -->
@@ -26,7 +26,7 @@ new class extends Component {
                 </div>
 
                 <div class="shape shape-2">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/slvg">
                         <path d="M41.3,-49.1C54.4,-39.3,66.6,-27.2,71.1,-12.1C75.6,3,72.4,20.9,63.3,34.4C54.2,47.9,39.2,56.9,23.2,62.3C7.1,67.7,-10,69.4,-24.8,64.1C-39.7,58.8,-52.3,46.5,-60.1,31.5C-67.9,16.4,-70.9,-1.4,-66.3,-16.6C-61.8,-31.8,-49.7,-44.3,-36.3,-54C-22.9,-63.7,-8.2,-70.6,3.6,-75.1C15.4,-79.6,28.2,-58.9,41.3,-49.1Z" transform="translate(100 100)"></path>
                     </svg>
                 </div>

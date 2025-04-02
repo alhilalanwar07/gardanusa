@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Actions\Logout;
+use App\Models\Service;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -11,78 +12,70 @@ new class extends Component {
 
         $this->redirect('/', navigate: true);
     }
+
+    public function with(): array
+    {
+        return [
+            'services' => Service::orderBy('created_at', 'desc')->get(),
+        ];
+    }
 }; ?>
 
 <div>
-    <div class="sidebar" data-background-color="white">
-        <div class="sidebar-logo">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
-                <a href="#" class="logo">
-                    <img src="{{ url('/') }}/assets/img/logo/koltim-2.png" alt="kolaka timur" height="30" />
-                </a>
-                <div class="nav-toggle">
-                    <button class="btn btn-toggle toggle-sidebar">
-                        <i class="gg-menu-right"></i>
-                    </button>
-                    <button class="btn btn-toggle sidenav-toggler">
-                        <i class="gg-menu-left"></i>
-                    </button>
-                </div>
-                <button class="topbar-toggler more">
-                    <i class="gg-more-vertical-alt"></i>
-                </button>
-            </div>
-            <!-- End Logo Header -->
-        </div>
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
-            <div class="sidebar-content">
-                <ul class="nav nav-secondary">
-                    <li class="nav-item {{ Route::is('home') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('home') }}" >
-                            <i class="fas fa-home"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-section">
-                        <span class="sidebar-mini-icon">
-                            <i class="fa fa-ellipsis-h"></i>
-                        </span>
-                        <h4 class="text-section">Masters</h4>
-                    </li>
-                    <li class="nav-section">
-                        <span class="sidebar-mini-icon">
-                            <i class="fa fa-ellipsis-h"></i>
-                        </span>
-                        <h4 class="text-section">Proses</h4>
-                    </li>
-                    @if(auth()->user()->role == 'admin')
-                    <li class="nav-item {{ Route::is('admin.manajemen-user') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.manajemen-user') }}" wire:navigate>
-                            <i class="fas fa-users"></i>
-                            <p>Manajemen User</p>
-                        </a>
-                    </li>
-                    @endif
-                    <li class="nav-item {{ Route::is('profil') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('profil') }}" wire:navigate>
-                            <i class="fas fa-user"></i>
-                            <p>Profil</p>
-                        </a>
-                    </li>
+    <footer id="footer" class="footer">
 
-
-                    <br>
-                    <div class="px-4">
-                        <li class="nav-item" style="padding: 0px !important;">
-                            <a href="#" wire:click="logout" class=" text-center btn btn-sm btn-danger w-100 btn-block d-flex justify-content-center align-items-center" style="padding: 0px !important;">
-                                <i class="fas fa-sign-out-alt fa-lg m-2 p-1"></i> &nbsp;
-                                <p style="padding: 0px !important; margin: 5px !important">Keluar</p>
-                            </a>
-                        </li>
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-6 col-md-6 footer-about">
+                    <a href="/" class="logo d-flex align-items-center">
+                        <span class="sitename">
+                            CV. Garuda Digital Nusantara
+                        </span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p class="gap-2"><i class="bi bi-geo-alt-fill"></i> Kec. Kolaka Kab. Kolaka Prov. Sulawesi Tenggara</p>
+                        <p class="gap-2"><i class="bi bi-envelope-fill"></i> <span>garudadigitalnusantara@gmail.com</span></p>
                     </div>
-                </ul>
+                    <div class="social-links d-flex mt-4">
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-3 footer-links">
+                    <h4>
+                        Layanan Kami
+                    </h4>
+                    <ul>
+                        @foreach($services as $service)
+                            <li><a href="/services/{{ $service->slug }}">{{ $service->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span>
+                {{ date('Y') }}
+                <strong class="px-1 sitename">
+                    CV. Garuda Digital Nusantara
+                </strong> <span>All Rights Reserved</span>
+            </p>
+        </div>
+
+    </footer>
 </div>

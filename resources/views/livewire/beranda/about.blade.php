@@ -7,13 +7,13 @@ new class extends Component {
 }; ?>
 
 <div>
-    <section id="about" class="about section">
+    <section id="tentang" class="about section light-background">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row gy-4 align-items-center justify-content-between">
                 <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                    <span class="about-meta">ABOUT US</span>
+                    <span class="about-meta">TENTANG KAMI</span>
                     <h2 class="about-title">CV. Garuda Digital Nusantara</h2>
-                    <p class="about-description">
+                    <p class="about-description text-justify" style="text-align: justify;">
                         CV. Garuda Digital Nusantara hadir sebagai solusi digital terbaik untuk pengembangan website dan mobile app di Kolaka. 
                         Sebagai mitra digitalisasi terpercaya, kami mendukung pemerintahan, bisnis, UMKM, startup, dan korporat dalam melakukan transformasi digital yang inovatif.
                     </p>
@@ -36,7 +36,7 @@ new class extends Component {
 
                     <div class="info-wrapper">
                         <div class="row gy-4">
-                            <div class="col-lg-5">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="profile d-flex align-items-center gap-3">
                                     <img src="{{url('/')}}/assets-front/img/avatar-1.webp" alt="CEO Profile" class="profile-image">
                                     <div>
@@ -45,8 +45,8 @@ new class extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-7">
-                                <div class="contact-info d-flex align-items-center gap-2">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="contact-info d-flex align-items-center gap-3" style="background: none; box-shadow: none;">
                                     <i class="bi bi-telephone-fill"></i>
                                     <div>
                                         <p class="contact-label">Kontak Kami</p>

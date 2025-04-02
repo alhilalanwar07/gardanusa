@@ -7,7 +7,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <section id="features-cards" class="features-cards section">
+    <section id="features-cards" class="features-cards section" style="padding-top: 0px;">
 
         <div class="container">
 

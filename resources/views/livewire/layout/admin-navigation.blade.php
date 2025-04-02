@@ -87,6 +87,12 @@ new class extends Component {
                             <p>Testimoni</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Route::is('admin.faq*') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.faq') }}" wire:navigate>
+                            <i class="fas fa-question-circle"></i>
+                            <p>FAQ</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>

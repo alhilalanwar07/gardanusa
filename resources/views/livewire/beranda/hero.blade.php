@@ -7,7 +7,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <section id="hero" class="hero section">
+    <section id="beranda" class="hero section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -23,7 +23,7 @@ new class extends Component {
                             <span class="accent-text">Solusi Digital Terbaik</span>
                         </h1>
 
-                        <p class="mb-4 mb-md-5">
+                        <p class="mb-4 mb-md-5" style="text-align: justify;">
                             Solusi digital terbaik untuk pengembangan website dan mobile app. 
                             Mitra digitalisasi terpercaya di semua sektor,
                             mulai dari pemerintahan, bisnis, UMKM, startup, hingga korporat.
@@ -46,10 +46,6 @@ new class extends Component {
                         <div class="customers-badge">
                             <div class="customer-avatars">
                                 <img src="{{url('/')}}/assets-front/img/avatar-1.webp" alt="Klien Pemerintahan" class="avatar">
-                                <img src="{{url('/')}}/assets-front/img/avatar-2.webp" alt="Klien Bisnis" class="avatar">
-                                <img src="{{url('/')}}/assets-front/img/avatar-3.webp" alt="Klien UMKM" class="avatar">
-                                <img src="{{url('/')}}/assets-front/img/avatar-4.webp" alt="Klien Startup" class="avatar">
-                                <img src="{{url('/')}}/assets-front/img/avatar-5.webp" alt="Klien Korporat" class="avatar">
                                 <span class="avatar more">50+</span>
                             </div>
                             <p class="mb-0 mt-2">Lebih dari 50 klien puas dengan layanan digital kami</p>

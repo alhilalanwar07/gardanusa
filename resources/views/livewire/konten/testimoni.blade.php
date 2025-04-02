@@ -31,9 +31,7 @@ new class extends Component {
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate($this->perPage),
-            'clients' => \App\Models\Client::whereNotIn('id', function($query) {
-                $query->select('client_id')->from('testimonials');
-            })->orderBy('name', 'asc')->get(),
+            'clients' => \App\Models\Client::orderBy('name', 'asc')->get(),
             'projects' => \App\Models\Project::whereNotIn('id', function($query) {
                 $query->select('project_id')->from('testimonials');
             })->orderBy('title', 'asc')->get(),
