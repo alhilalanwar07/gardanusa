@@ -8,6 +8,7 @@
   <meta name="description" content="CV. Garuda Digital Nusantara">
   <meta name="keywords" content="CV. Garuda Digital Nusantara">
   <meta name="author" content="CV. Garuda Digital Nusantara">
+  <meta name="google-site-verification" content="TXXASz3Wrgzqyc4q2D_1c_3qlHfCehoQkFkN2SfzX_s" />
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -31,6 +32,7 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
 
   <style>
     /* font poppins kecuali fas,far, icon dll */
