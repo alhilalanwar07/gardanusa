@@ -14,12 +14,10 @@ new class extends Component {
 
 <div>
     <section id="produk" class="features section" >
-
-        <!-- Section Title -->
         <div class="container section-title pb-4" data-aos="fade-up">
             <h2>Produk</h2>
             <p>Produk unggulan kami dengan kualitas terbaik untuk memenuhi kebutuhan Anda</p>
-        </div><!-- End Section Title -->
+        </div>
 
         <div class="container " data-aos="fade-up" data-aos-delay="100">
 

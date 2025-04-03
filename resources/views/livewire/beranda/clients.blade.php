@@ -14,8 +14,11 @@ new class extends Component {
 }; ?>
 
 <div>
-    <section id="clients" class="clients section">
+    <section id="clients" class="clients section" style="padding: 20px 0px;">
 
+        <div class="container section-title pb-4 pt-0" data-aos="fade-up" data-aos-delay="100">
+            <h2>Klien Kami</h2>
+        </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="swiper init-swiper">
@@ -53,24 +56,24 @@ new class extends Component {
                     }
                 </script>
                 <div class="swiper-wrapper align-items-center">
-                   
+
 
                     @foreach($clients as $client)
-                        <div class="swiper-slide">
-                            <img src="{{ asset('storage/' . $client->logo) }}" class="img-fluid" alt="{{ $client->name }}">
-                        </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/' . $client->logo) }}" class="img-fluid" alt="{{ $client->name }}">
+                    </div>
                     @endforeach
 
                     @for($i = 0; $i < $additionalNeeded; $i++)
                         <div class="swiper-slide">
-                            <img src="{{ asset('storage/' . $clients[($i % $clientCount)]->logo) }}" class="img-fluid" alt="{{ $clients[($i % $clientCount)]->name }}">
-                        </div>
-                    @endfor
+                        <img src="{{ asset('storage/' . $clients[($i % $clientCount)]->logo) }}" class="img-fluid" alt="{{ $clients[($i % $clientCount)]->name }}">
                 </div>
-                <div class="swiper-pagination"></div>
+                @endfor
             </div>
-
+            <div class="swiper-pagination"></div>
         </div>
 
-    </section>
+</div>
+
+</section>
 </div>

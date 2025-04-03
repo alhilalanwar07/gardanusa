@@ -22,6 +22,7 @@ new class extends Component {
                     <li><a href="#produk">Produk</a></li>
                     <li><a href="#layanan">Layanan</a></li>
                     <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

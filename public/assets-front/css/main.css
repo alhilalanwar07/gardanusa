@@ -1345,6 +1345,110 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Blog Cards Section
+--------------------------------------------------------------*/
+.blog-cards .feature-box {
+  position: relative;
+  height: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.blog-cards .feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-cards .feature-box .post-image {
+  position: relative;
+  margin: 0;
+  height: 330px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.blog-cards .feature-box .post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-cards .feature-box:hover .post-image img {
+  transform: scale(1.05);
+}
+
+.blog-cards .feature-box h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+
+.blog-cards .feature-box p {
+  font-size: 14px;
+  color: var(--default-color);
+  margin-bottom: 15px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.blog-cards .feature-box .read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.blog-cards .feature-box .read-more i {
+  transition: transform 0.3s ease;
+}
+
+.blog-cards .feature-box .read-more:hover i {
+  transform: translateX(5px);
+}
+
+/* Color variations */
+.blog-cards .feature-box.orange {
+  background-color: #fff9f2;
+}
+
+.blog-cards .feature-box.orange .read-more {
+  color: #edb86e;
+}
+
+.blog-cards .feature-box.blue {
+  background-color: #f2f9ff;
+}
+
+.blog-cards .feature-box.blue .read-more {
+  color: #20a5f8;
+}
+
+.blog-cards .feature-box.green {
+  background-color: #f2fff9;
+}
+
+.blog-cards .feature-box.green .read-more {
+  color: #48c88a;
+}
+
+.blog-cards .feature-box.red {
+  background-color: #fff2f2;
+}
+
+.blog-cards .feature-box.red .read-more {
+  color: #f28484;
+}
+
+/*--------------------------------------------------------------
 # Features 2 Section
 --------------------------------------------------------------*/
 .features-2 .feature-item .feature-icon {
