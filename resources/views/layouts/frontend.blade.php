@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JF8TZJN2NF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JF8TZJN2NF');
+  </script>
   <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
