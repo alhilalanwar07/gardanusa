@@ -8,7 +8,7 @@
   <meta name="description" content="CV. Garuda Digital Nusantara">
   <meta name="keywords" content="CV. Garuda Digital Nusantara">
   <meta name="author" content="CV. Garuda Digital Nusantara">
-  <meta name="google-site-verification" content="TXXASz3Wrgzqyc4q2D_1c_3qlHfCehoQkFkN2SfzX_s" />
+  <meta name="google-site-verification" content="OxHtDk213lKW9H0kNGlfGOO3h5HYNJWnWHqLnoc-0hg" />
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>

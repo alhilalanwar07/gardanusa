@@ -23,7 +23,7 @@ return [
          * Webmaster tags, bisa diisi jika sudah tersedia verifikasi dari Google, Bing, dll.
          */
         'webmaster_tags' => [
-            'google'    => 'google-site-verification=TXXASz3Wrgzqyc4q2D_1c_3qlHfCehoQkFkN2SfzX_s',
+            'google'    => 'google-site-verification=OxHtDk213lKW9H0kNGlfGOO3h5HYNJWnWHqLnoc-0hg',
             'bing'      => null,
             'alexa'     => null,
             'pinterest' => null,
