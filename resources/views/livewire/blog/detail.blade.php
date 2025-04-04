@@ -11,7 +11,7 @@ use Livewire\Volt\Component;
 new class extends Component {
     public Post $blog;
     public $relatedPosts;
-    
+
     public function mount(string $slug): void
     {
         // Load the main blog post with author and tags
@@ -36,13 +36,13 @@ new class extends Component {
         // Use meta_description if available, otherwise create from content
         $description = $this->blog->meta_description ?? Str::limit(strip_tags($this->blog->content), 160);
         $title = $this->blog->meta_title ?? $this->blog->title;
-        
+
         // Set canonical URL
         $canonicalUrl = route('user.blog', ['slug' => $this->blog->slug]);
-        
+
         // Featured image full URL
-        $imageUrl = $this->blog->featured_image 
-            ? asset('storage/' . $this->blog->featured_image) 
+        $imageUrl = $this->blog->featured_image
+            ? asset('storage/' . $this->blog->featured_image)
             : null;
 
         // Get tags as array
@@ -55,6 +55,10 @@ new class extends Component {
             ->addMeta('article:published_time', $this->blog->published_at->toW3CString())
             ->addMeta('article:modified_time', $this->blog->updated_at->toW3CString())
             ->addMeta('article:section', $this->blog->category->name ?? 'Uncategorized');
+
+        SEOMeta::addMeta('og:image', $imageUrl);
+        SEOMeta::addMeta('og:image:width', '1200');
+        SEOMeta::addMeta('og:image:height', '630');
 
         if (!empty($tags)) {
             SEOMeta::addKeyword($tags);
@@ -119,6 +123,15 @@ new class extends Component {
 }; ?>
 
 <div>
+    @push('meta')
+    <!-- Meta Tags Khusus Facebook/WhatsApp -->
+    @if($blog->featured_image)
+    <meta property="og:image" content="{{ asset('storage/' . $blog->featured_image) }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{ $blog->title }}" />
+    @endif
+    @endpush
     <section class="blog-detail section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">
@@ -126,8 +139,8 @@ new class extends Component {
                     <div class="post-meta mb-3">
                         <span class="date">{{ $blog->published_at->format('d M Y') }}</span>
                         @if($blog->category)
-                            <span class="mx-2">|</span>
-                            <span class="category">{{ $blog->category->name ?? 'Uncategorized' }}</span>
+                        <span class="mx-2">|</span>
+                        <span class="category">{{ $blog->category->name ?? 'Uncategorized' }}</span>
                         @endif
                     </div>
                     <h1 class="blog-title mb-4">{{ $blog->title }}</h1>
@@ -164,7 +177,7 @@ new class extends Component {
                         <h5 class="mb-3">Tags</h5>
                         <div class="tags">
                             @foreach($blog->tags as $tag)
-                                <a href="#" class="badge bg-light text-dark me-2 mb-2 py-2 px-3">{{ $tag->name }}</a>
+                            <a href="#" class="badge bg-light text-dark me-2 mb-2 py-2 px-3">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                     </div>
@@ -174,12 +187,11 @@ new class extends Component {
                         <h5 class="mb-3">Bagikan Artikel</h5>
                         <div class="social-share">
                             @php
-                                $shareUrl = urlencode(route('user.blog', ['slug' => $blog->slug]));
-                                $shareTitle = urlencode($blog->title);
-                                $shareImage = asset('storage/' . $blog->featured_image);
-                                // dd($shareUrl, $shareTitle, $shareImage);
+                            $shareUrl = urlencode(route('user.blog', ['slug' => $blog->slug]));
+                            $shareTitle = urlencode($blog->title);
+                            $shareImage = urlencode(asset('storage/' . $blog->featured_image));
                             @endphp
-                            
+
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" class="btn btn-outline-primary me-2 mb-2" target="_blank" rel="noopener">
                                 <i class="bi bi-facebook me-1"></i> Facebook
                             </a>
@@ -196,7 +208,7 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-            
+
             @if($relatedPosts->count() > 0)
             <div class="related-posts mt-3 pt-3 border-top">
                 <div class="row">
@@ -215,8 +227,8 @@ new class extends Component {
                                 <div class="post-meta small mb-2">
                                     <span class="date">{{ $post->published_at->format('d M Y') }}</span>
                                     @if($post->category)
-                                        <span class="mx-1">|</span>
-                                        <span class="category">{{ $post->category->name }}</span>
+                                    <span class="mx-1">|</span>
+                                    <span class="category">{{ $post->category->name }}</span>
                                     @endif
                                 </div>
                                 <h5 class="card-title">{{ $post->title }}</h5>

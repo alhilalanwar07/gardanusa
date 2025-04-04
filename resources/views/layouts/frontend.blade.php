@@ -49,6 +49,8 @@
 
   <link href="{{ url('/') }}/assets-front/css/main.css" rel="stylesheet">
 
+  @stack('meta')
+
   <link rel="icon" type="image/png" href="{{url('/')}}/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="{{url('/')}}/favicon.svg" />
   <link rel="shortcut icon" href="{{url('/')}}/favicon.ico" />
