@@ -26,9 +26,6 @@ new class extends Component {
         $this->relatedPosts = Post::query()
             ->where('id', '!=', $this->blog->id)
             ->where('status', 'published')
-            ->when($this->blog->category_id, function($query) {
-                return $query->where('category_id', $this->blog->category_id);
-            })
             ->latest()
             ->limit(3)
             ->get();
@@ -156,7 +153,7 @@ new class extends Component {
             </div>
             @endif
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-lg-12 mx-auto">
                     <div class="blog-content mb-5 text-justify" data-aos="fade-up" data-aos-delay="300" style="text-align: justify;">
                         {!! $blog->content !!}
@@ -203,7 +200,7 @@ new class extends Component {
             <div class="related-posts mt-3 pt-3 border-top">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="mb-4">Artikel Terkait</h3>
+                        <h3 class="mb-4">Artikel Terbaru</h3>
                     </div>
                     @foreach($relatedPosts as $post)
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ 100 * $loop->iteration }}">
