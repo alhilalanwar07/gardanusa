@@ -24,7 +24,6 @@ new class extends Component {
 <div>
     <section class="blog-detail section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <!-- Blog Header -->
             <div class="row">
                 <div class="col-lg-12 mx-auto">
                     <div class="post-meta mb-3">
@@ -47,7 +46,6 @@ new class extends Component {
                 </div>
             </div>
 
-            <!-- Featured Image -->
             @if($blog->featured_image)
             <div class="row">
                 <div class="col-lg-12 mx-auto">
@@ -58,14 +56,12 @@ new class extends Component {
             </div>
             @endif
 
-            <!-- Blog Content -->
             <div class="row">
                 <div class="col-lg-12 mx-auto">
                     <div class="blog-content mb-5 text-justify" data-aos="fade-up" data-aos-delay="300" style="text-align: justify;">
                         {!! $blog->content !!}
                     </div>
 
-                    <!-- Tags -->
                     @if($blog->tags && count($blog->tags) > 0)
                     <div class="blog-tags mb-5">
                         <h5 class="mb-3">Tags</h5>
@@ -77,7 +73,6 @@ new class extends Component {
                     </div>
                     @endif
 
-                    <!-- Share -->
                     <div class="blog-share mb-3">
                         <h5 class="mb-3">Bagikan Artikel</h5>
                         <div class="social-share">
@@ -94,8 +89,6 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-
-            <!-- Related Posts -->
             
             @if($relatedPosts->count() > 0)
             <div class="related-posts mt-3 pt-3 border-top">
