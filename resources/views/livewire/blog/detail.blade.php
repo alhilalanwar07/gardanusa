@@ -1,23 +1,72 @@
 <?php
 
 use App\Models\Post;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Route;
+use Spatie\SchemaOrg\Schema;
 
 new class extends Component {
     public Post $blog;
     public $relatedPosts;
     
-    public function mount(string $slug): void
+    public function mount(string $slug): void // Make sure this matches route parameter name
     {
-        $this->blog = Post::where('slug', $slug)->firstOrFail();
+        // Load the main blog post
+        $this->blog = Post::with('category') // Eager load category relationship
+            ->where('slug', $slug)
+            ->firstOrFail();
 
-        $this->relatedPosts = Post::where('id', '!=', $this->blog->id)
-            ->when($this->blog->category, function($query) {
+        // Set SEO meta tags
+        $this->setSeoMeta();
+
+        // Load related posts
+        $this->relatedPosts = Post::query()
+            ->where('id', '!=', $this->blog->id)
+            ->when($this->blog->category_id, function($query) {
                 return $query->where('category_id', $this->blog->category_id);
             })
-            ->limit(3)
             ->latest()
+            ->limit(3)
             ->get();
+    }
+
+    protected function setSeoMeta(): void
+    {
+        // Clean up the description
+        $description = strip_tags(Str::limit($this->blog->content, 160));
+
+        // Basic meta tags
+        SEOMeta::setTitle($this->blog->title)
+            ->setDescription($description)
+            ->addMeta('article:published_time', $this->blog->created_at->toW3CString())
+            ->addMeta('article:section', $this->blog->category->name ?? 'Uncategorized');
+
+        // Open Graph
+        OpenGraph::setTitle($this->blog->title)
+            ->setDescription($description)
+            ->setType('article')
+            ->setArticle([
+                'published_time' => $this->blog->created_at->toW3CString(),
+                'section' => $this->blog->category->name ?? 'Uncategorized',
+                'tag' => $this->blog->tags->pluck('name')->toArray()
+            ]);
+
+        if ($this->blog->featured_image) {
+            OpenGraph::addImage(asset('storage/' . $this->blog->featured_image));
+        }
+
+        // Twitter Card
+        TwitterCard::setTitle($this->blog->title)
+            ->setDescription($description)
+            ->setImage(asset('storage/' . $this->blog->featured_image));
+
+        // JSON-LD
+        JsonLd::setTitle($this->blog->title)
+            ->setDescription($description)
+            ->setType('Article')
+            ->addImage(asset('storage/' . $this->blog->featured_image))
+            ->setUrl(route('user.blog', ['slug' => $this->blog->slug]));
     }
 }; ?>
 
