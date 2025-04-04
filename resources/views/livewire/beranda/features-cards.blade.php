@@ -35,7 +35,7 @@ new class extends Component {
                             <h4>{{ $post->title }}</h4>
                             <p>{{ $post->excerpt }}</p>
                             <div class="mt-4 text-end">
-                                <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                                <a href="{{ route('user.blog', $post->slug) }}" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

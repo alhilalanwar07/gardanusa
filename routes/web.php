@@ -30,3 +30,6 @@ Route::get('/', function () {
     return view('user.beranda');
 })->name('beranda');
 
+Route::get('/blog/{slug}', function ($slug) {
+    return view('user.blog', ['slug' => $slug]);
+})->name('user.blog');
