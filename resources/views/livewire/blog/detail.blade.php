@@ -176,7 +176,8 @@ new class extends Component {
                             @php
                                 $shareUrl = urlencode(route('user.blog', ['slug' => $blog->slug]));
                                 $shareTitle = urlencode($blog->title);
-                                $shareImage = urlencode(asset('storage/' . $blog->featured_image));
+                                $shareImage = asset('storage/' . $blog->featured_image);
+                                // dd($shareUrl, $shareTitle, $shareImage);
                             @endphp
                             
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" class="btn btn-outline-primary me-2 mb-2" target="_blank" rel="noopener">
