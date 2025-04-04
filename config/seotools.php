@@ -12,8 +12,9 @@ return [
          */
         'defaults'       => [
             'title'        => 'CV. Garuda Digital Nusantara | Mitra Digitalisasi Terpercaya', // Judul default
-            'titleBefore'  => false, // Jika ingin menampilkan default title sebelum judul halaman
-            'description'  => 'Solusi digital terbaik untuk pengembangan website dan mobile app di Kolaka. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.', // Deskripsi default
+            'titleBefore'  => 'CV. Garuda Digital Nusantara | ', // Judul sebelum
+            'titleAfter'   => ' | Mitra Digitalisasi Terpercaya', // Judul setelah
+            'description'  => 'Solusi digital terbaik untuk pengembangan website dan mobile app. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.', // Deskripsi default
             'separator'    => ' - ',
             'keywords'     => ['digital', 'web development', 'mobile development', 'Kolaka', 'pemerintahan'], // Kata kunci
             'canonical'    => null, // Gunakan Url::full() secara default
@@ -38,7 +39,7 @@ return [
          */
         'defaults' => [
             'title'       => 'CV. Garuda Digital Nusantara | Mitra Digitalisasi Terpercaya',
-            'description' => 'Solusi digital terbaik untuk pengembangan website dan mobile app di Kolaka. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.',
+            'description' => 'Solusi digital terbaik untuk pengembangan website dan mobile app. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.',
             'url'         => null, // Menggunakan Url::full() secara default
             'type'        => 'website',
             'site_name'   => 'CV. Garuda Digital Nusantara',
@@ -61,13 +62,41 @@ return [
          * Konfigurasi default untuk JSON-LD.
          */
         'defaults' => [
-            'title'       => 'CV. Garuda Digital Nusantara | Mitra Digitalisasi Terpercaya',
-            'description' => 'Solusi digital terbaik untuk pengembangan website dan mobile app di Kolaka. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.',
+            '@context'    => 'https://schema.org',
+            '@type'       => ['Organization', 'LocalBusiness'],
+            'name'        => 'CV. Garuda Digital Nusantara',
+            'description' => 'Solusi digital terbaik untuk pengembangan website dan mobile app. Mitra Digitalisasi Terpercaya untuk pemerintahan dan bisnis.',
             'url'         => null, // Gunakan Url::full() secara default
-            'type'        => 'WebPage',
-            'images'      => [
-                // Tambahkan URL gambar default jika 
+            'logo'        => env('APP_URL') . '/favicon-96x96.png',
+            'image'       => [
+                env('APP_URL') . '/favicon-96x96.png',
+                env('APP_URL') . '/favicon-96x96.png',
             ],
+            'telephone'   => '+628xxxxxxxxxx', // Isi dengan nomor telepon sebenarnya
+            'email'       => 'info@gardanusa.tech', // Isi dengan email sebenarnya
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => 'Jalan Example No. 123', // Isi dengan alamat sebenarnya
+                'addressLocality' => 'Kolaka',
+                'addressRegion'   => 'Sulawesi Tenggara',
+                'postalCode'      => '93xxx', // Isi dengan kode pos sebenarnya
+                'addressCountry'  => 'ID',
+            ],
+            'sameAs'      => [
+                'https://facebook.com/gardanusa',
+                'https://instagram.com/gardanusa',
+                // Tambahkan profil media sosial lainnya
+            ],
+            'openingHoursSpecification' => [
+                [
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                    'opens'     => '00:01',
+                    'closes'    => '23:59',
+                ],
+            ],
+            'priceRange'  => '$$',
+            'serviceType' => ['Web Development', 'Mobile Development', 'Digital Solutions'],
         ],
     ],
 ];

@@ -62,9 +62,38 @@
   <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CV. Garuda Digital Nusantara",
+      "url": "{{ url('/') }}",
+      "logo": "{{ url('/') }}/favicon-96x96.png",
+      "sameAs": [
+        "https://www.facebook.com/gardanusa",
+        "https://www.instagram.com/gardanusa",
+        "https://www.linkedin.com/company/gardanusa",
+        "https://www.tiktok.com/@gardanusa"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+62 812-3456-7890",
+        "contactType": "Customer Service",
+        "areaServed": "ID",
+        "availableLanguage": "Bahasa Indonesia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kec. Kolaka",
+        "addressLocality": "Kolaka",
+        "addressRegion": "Sulawesi Tenggara",
+        "postalCode": "93511",
+        "addressCountry": "ID"
+      }
+    }
+  </script>
 
   <style>
-    /* font poppins kecuali fas,far, icon dll */
     * {
       font-family: 'Poppins', sans-serif !important;
     }

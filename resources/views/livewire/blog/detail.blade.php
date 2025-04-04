@@ -124,7 +124,6 @@ new class extends Component {
 
 <div>
     @push('meta')
-    <!-- Meta Tags Khusus Facebook/WhatsApp -->
     @if($blog->featured_image)
     <meta property="og:image" content="{{ asset('storage/' . $blog->featured_image) }}" />
     <meta property="og:image:width" content="1200" />
