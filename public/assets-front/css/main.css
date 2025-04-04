@@ -2454,7 +2454,7 @@ section,
 # Blog Detail Section
 --------------------------------------------------------------*/
 .blog-detail {
-  padding: 120px 0 60px;
+  padding: 120px 20px 60px;
 }
 
 .blog-detail .post-meta {
