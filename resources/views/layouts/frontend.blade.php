@@ -30,38 +30,53 @@
     })(window, document, 'script', 'dataLayer', 'GTM-W2P7DDW3');
   </script>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title', config('app.name'))</title>
-  <meta name="description" content="CV. Garuda Digital Nusantara">
-  <meta name="keywords" content="CV. Garuda Digital Nusantara">
+  <meta name="description" content="CV. Garuda Digital Nusantara - Digitalisasi bisnis Anda dengan solusi IT terbaik.">
+  <meta name="keywords" content="CV. Garuda Digital Nusantara, IT Solution, Web Development, Software Development">
   <meta name="author" content="CV. Garuda Digital Nusantara">
+  <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="OxHtDk213lKW9H0kNGlfGOO3h5HYNJWnWHqLnoc-0hg" />
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CV. Garuda Digital Nusantara">
+  <meta property="og:description" content="Digitalisasi bisnis Anda dengan solusi IT terbaik.">
+  <meta property="og:image" content="{{ url('/') }}/favicon-96x96.png">
+  <meta property="og:url" content="{{ url('/') }}">
+  <meta property="og:site_name" content="CV. Garuda Digital Nusantara">
 
-  <link href="{{ url('/') }}/assets-front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ url('/') }}/assets-front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="{{ url('/') }}/assets-front/vendor/aos/aos.css" rel="stylesheet">
-  <link href="{{ url('/') }}/assets-front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="{{ url('/') }}/assets-front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CV. Garuda Digital Nusantara">
+  <meta name="twitter:description" content="Digitalisasi bisnis Anda dengan solusi IT terbaik.">
+  <meta name="twitter:image" content="{{ url('/') }}/favicon-96x96.png">
 
-  <link href="{{ url('/') }}/assets-front/css/main.css" rel="stylesheet">
+  <!-- Preconnect & Preload Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/vendor/aos/aos.css">
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/vendor/glightbox/css/glightbox.min.css">
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/vendor/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="{{ url('/') }}/assets-front/css/main.css">
 
   @stack('meta')
 
-  <link rel="icon" type="image/png" href="{{url('/')}}/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="{{url('/')}}/favicon.svg" />
-  <link rel="shortcut icon" href="{{url('/')}}/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Gardanusa" />
-  <link rel="manifest" href="{{url('/')}}/site.webmanifest" />
-  <link rel="manifest" href="{{url('/')}}/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="{{url('/')}}/ms-icon-144x144.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ url('/') }}/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="{{ url('/') }}/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url('/') }}/apple-touch-icon.png">
+  <link rel="shortcut icon" href="{{ url('/') }}/favicon.ico">
+  <link rel="manifest" href="{{ url('/') }}/manifest.json">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -92,6 +107,7 @@
       }
     }
   </script>
+
 
   <style>
     * {
