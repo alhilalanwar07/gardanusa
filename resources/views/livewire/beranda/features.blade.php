@@ -46,7 +46,7 @@ new class extends Component {
                             </div>
                             @if($product->link)
                             <div class="mt-3">
-                                <a href="{{ $product->link }}" class="btn-learn-more" target="_blank">Lihat Detail <i class="bi bi-arrow-right"></i></a>
+                                <a href="{{ $product->link }}" class="btn-learn-more" target="_blank">Lihat Demo <i class="bi bi-arrow-right"></i></a>
                             </div>
                             @endif
                         </div>
